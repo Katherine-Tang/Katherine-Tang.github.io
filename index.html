@@ -573,6 +573,55 @@
       z-index: 1;
     }
 
+    /* 关于我们 - 团队介绍 */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .member-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      text-align: center;
+      border: 1px dashed var(--line);
+      box-shadow: 0 10px 22px rgba(35,71,161,0.08);
+    }
+
+    .member-avatar {
+      width: 86px;
+      height: 86px;
+      border-radius: 999px;
+      margin: 0 auto 12px;
+      background: rgba(90,166,255,0.08);
+      border: 2px dashed rgba(35,71,161,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px;
+    }
+
+    .member-name {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .member-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .member-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     .footer {
       padding: 28px 0 44px;
       color: var(--muted);
@@ -598,7 +647,8 @@
       .cta-grid,
       .feature-grid,
       .grid-3,
-      .progress-wrap {
+      .progress-wrap,
+      .team-grid {
         grid-template-columns: 1fr;
       }
 
@@ -755,6 +805,129 @@
             <div class="icon">✨</div>
             <h3>设计关键词</h3>
             <p>Mobile-first、Playful、Location-based、Simple onboarding、Accessible UI、Campus storytelling。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 团队介绍（About Us） ================ -->
+    <section id="team">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>关于我们 · Team B3</h2>
+            <p>
+              本区块用于课程要求中的“成员介绍 + 两个 persona 展示”。请在下面四个卡片中替换为你们自己的照片、学号与个人简介内容。
+            </p>
+          </div>
+        </div>
+
+        <div class="team-grid">
+          <!-- 成员 1：Jiayi Chu -->
+          <div class="member-card">
+            <!-- TODO: 将此占位替换为 Jiayi Chu 的个人照片（建议 1:1 方形头像），或在此处插入 <img> 标签 -->
+            <div class="member-avatar">
+              在此替换为<br>Jiayi Chu 头像
+            </div>
+            <div class="member-name">Jiayi Chu</div>
+            <!-- TODO: 在下面填写对应学号，例如 “Student ID: 123456789” -->
+            <div class="member-meta">Student ID: （在此填写 Jiayi Chu 的学号）</div>
+            <!-- TODO: 在下面两三句话中介绍个人角色、技能或在本项目中的主要负责内容 -->
+            <div class="member-note">
+              在此用 2–3 句话简要介绍 Jiayi 在项目中的角色（例如：交互设计 / 原型制作 / 用户研究），以及你想强调的个人特长。
+            </div>
+          </div>
+
+          <!-- 成员 2：Jiayu Wang -->
+          <div class="member-card">
+            <!-- TODO: 将此占位替换为 Jiayu Wang 的个人照片 -->
+            <div class="member-avatar">
+              在此替换为<br>Jiayu Wang 头像
+            </div>
+            <div class="member-name">Jiayu Wang</div>
+            <!-- TODO: 填写对应学号 -->
+            <div class="member-meta">Student ID: （在此填写 Jiayu Wang 的学号）</div>
+            <!-- TODO: 简要说明在本项目中的分工与兴趣方向 -->
+            <div class="member-note">
+              在此用 2–3 句话介绍 Jiayu 的负责内容（如：前端开发 / 视觉设计 / 信息架构），可以补充与 XR 或 playful design 相关的兴趣点。
+            </div>
+          </div>
+
+          <!-- 成员 3：Xinyan Xue -->
+          <div class="member-card">
+            <!-- TODO: 将此占位替换为 Xinyan Xue 的个人照片 -->
+            <div class="member-avatar">
+              在此替换为<br>Xinyan Xue 头像
+            </div>
+            <div class="member-name">Xinyan Xue</div>
+            <!-- TODO: 填写对应学号 -->
+            <div class="member-meta">Student ID: （在此填写 Xinyan Xue 的学号）</div>
+            <!-- TODO: 简要介绍负责内容和技能 -->
+            <div class="member-note">
+              在此用 2–3 句话介绍 Xinyan 的负责内容（如：用户调研 / 内容撰写 / 测试与迭代），可以补充对用户体验或服务设计的关注点。
+            </div>
+          </div>
+
+          <!-- 成员 4：Zhiying Tang -->
+          <div class="member-card">
+            <!-- TODO: 将此占位替换为 Zhiying Tang 的个人照片 -->
+            <div class="member-avatar">
+              在此替换为<br>Zhiying Tang 头像
+            </div>
+            <div class="member-name">Zhiying Tang</div>
+            <!-- TODO: 填写对应学号 -->
+            <div class="member-meta">Student ID: （在此填写 Zhiying Tang 的学号）</div>
+            <!-- TODO: 简要介绍负责内容和技能 -->
+            <div class="member-note">
+              在此用 2–3 句话介绍 Zhiying 的负责内容（如：系统逻辑 / 页面实现 / 数据结构），也可以写与 XR / 技术实现相关的兴趣。
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Persona 展示卡片（10-80-10 规则） ================= -->
+        <div class="section-title" style="margin-top:32px;">
+          <div>
+            <h3 style="margin:0; font-size:20px; color:#17316f;">Personas · 10-80-10</h3>
+            <p style="margin:8px 0 0; color:#6b7280; line-height:1.7;">
+              下面两个小卡片用于在 GitHub portfolio 中展示你们依据 10-80-10 规则构建的 personas。现在内容是空的占位提示，
+              请在正式提交前替换为具体文案和图片。
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3" style="grid-template-columns: repeat(2, 1fr); gap:18px; margin-top:4px;">
+          <!-- Persona A：代表 80% 主流目标用户（例如：第一次来到校园的新生） -->
+          <div class="card">
+            <!-- TODO: 在此处加入 Persona A 的配图（例如：插画或头像照片），示例：<img src="..." alt="Persona A" style="width:100%;border-radius:16px;margin-bottom:10px;"> -->
+            <h4 style="margin:0 0 6px; font-size:18px; color:#17316f;">Persona A（主流新生用户）</h4>
+            <!-- TODO: 填写 Persona A 的基础信息，如：名字 / 年级 / 身份标签 -->
+            <p style="margin:0 0 8px; font-size:14px; color:#6b7280;">
+              基础信息：（在此填写 Persona A 的虚构姓名、年级、身份，如 “Lily · Year 1 · Mainland student”）
+            </p>
+            <!-- TODO: 用 3–5 个要点描述 Persona A 的目标 / 需求 / 痛点 / 使用场景 -->
+            <ul style="padding-left:18px; margin:0; font-size:14px; color:#6b7280; line-height:1.7;">
+              <li>目标：在此写 1–2 条该 persona 使用校园导览系统想达成的目标。</li>
+              <li>需求：在此写他/她在导航、信息获取上的关键需求。</li>
+              <li>痛点：在此写如果没有你们的系统，他/她会遇到的困难或焦虑。</li>
+              <li>典型场景：在此用一句话描述他/她什么时候、在哪里、用手机打开你们的导览。</li>
+            </ul>
+          </div>
+
+          <!-- Persona B：代表 10% 边缘 / 极端用户（例如：携带家人的国际访客） -->
+          <div class="card">
+            <!-- TODO: 在此处加入 Persona B 的配图 -->
+            <h4 style="margin:0 0 6px; font-size:18px; color:#17316f;">Persona B（边缘/特殊访客）</h4>
+            <!-- TODO: 填写 Persona B 的基础信息，如：名字 / 身份 / 来访目的 -->
+            <p style="margin:0 0 8px; font-size:14px; color:#6b7280;">
+              基础信息：（在此填写 Persona B 的虚构姓名、身份，如 “David · International visitor · Visiting with family”）
+            </p>
+            <!-- TODO: 用 3–5 个要点突出他/她与主流用户不同的需求与约束 -->
+            <ul style="padding-left:18px; margin:0; font-size:14px; color:#6b7280; line-height:1.7;">
+              <li>目标：在此写这类用户希望通过校园导览完成什么（例如：了解学校氛围、照顾家人体验）。</li>
+              <li>特殊需求：在此写语言、无障碍、时间安排等方面的额外需求。</li>
+              <li>痛点：在此写如果导览只考虑主流用户，他/她容易被忽略的地方。</li>
+              <li>典型场景：在此用一句话描述他/她与谁一起来校园、在什么时候使用你们的导览。</li>
+            </ul>
           </div>
         </div>
       </div>
