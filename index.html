@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zhiying Tang | Portfolio</title>
+  <meta name="description" content="Zhiying Tang's personal academic portfolio website." />
+
+  <style>
+  :root {
+      --bg: #ffffff;
+      --bg-soft: #fafafa;
+      --panel: #ffffff;
+      --panel-2: #f5f5f5;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.18);
+      --text: #111111;
+      --muted: #555555;
+      --soft: #888888;
+      --highlight: #000000;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      letter-spacing: 0.1px;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.88;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* NAV */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-inner {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: #000000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 1.5px;
+      background: #000000;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 24px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.28fr 0.92fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-left,
+    .hero-right,
+    .card,
+    .project-card,
+    .contact-card {
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .hero-left:hover,
+    .hero-right:hover,
+    .card:hover,
+    .contact-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .hero-left {
+      padding: 32px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.04);
+      color: #333333;
+      border: 1px solid rgba(0,0,0,0.10);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      line-height: 1.03;
+      margin-bottom: 18px;
+      letter-spacing: -1.8px;
+    }
+
+    .hero h1 span {
+      color: #000000;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #050505;
+      box-shadow: 0 10px 24px rgba(255,255,255,0.10);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-right {
+      padding: 28px;
+    }
+
+    .profile-card {
+      padding: 28px;
+      min-height: 100%;
+    }
+
+    .avatar {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-placeholder {
+      text-align: center;
+      color: var(--soft);
+      padding: 22px;
+      font-size: 0.95rem;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quick-info div {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+    }
+
+    .quick-info strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* SECTION */
+    section {
+      padding: 42px 0 72px;
+    }
+
+    /* 交替浅灰背景，增强版块层次感 */
+    section:nth-of-type(even) {
+      background: var(--bg-soft);
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .section-title small {
+      display: inline-block;
+      color: #2563eb; /* 蓝色：ABOUT / EDUCATION 等 */
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 8px;
+      letter-spacing: -0.6px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      padding: 28px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .highlight-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .highlight-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .highlight-item strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .timeline-top h3 {
+      font-size: 1.08rem;
+    }
+
+    .timeline-top span {
+      color: var(--soft);
+      font-size: 0.93rem;
+      white-space: nowrap;
+    }
+
+    .timeline-item .sub {
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p,
+    .timeline-item li {
+      color: var(--muted);
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* PROJECTS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.008));
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    .project-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--soft);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .tech-stack span {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.08);
+      font-size: 0.84rem;
+      color: var(--text);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      font-size: 0.95rem;
+      color: var(--highlight);
+      border-bottom: 1px solid rgba(0,0,0,0.28);
+      padding-bottom: 1px;
+    }
+
+    /* AWARDS + SKILLS */
+    .award-list,
+    .skill-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .award-item,
+    .skill-category {
+      padding: 18px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .award-item strong,
+    .skill-category strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .award-item span,
+    .skill-category p {
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact-card {
+      padding: 34px;
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 10px auto 22px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 24px 0 50px;
+      color: var(--soft);
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero-left,
+      .hero-right,
+      .card,
+      .project-card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .nav-inner {
+        gap: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo">Zhiying Tang</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left glass">
+        <div class="tag">Information & Computing Science · XJTLU</div>
+        <h1>Hi, I'm <span>Zhiying Tang</span></h1>
+        <p>
+          I am an undergraduate student in Information and Computing Science at Xi’an Jiaotong-Liverpool University,
+          with strong interests in AI applications, machine learning, intelligent systems, and data-driven product development.
+        </p>
+        <p>
+          My work spans predictive modeling, financial risk analysis, intelligent workflows, software development,
+          and research-oriented technical projects. I enjoy building practical systems that connect rigorous analysis with real-world impact.
+          You can find more details on my GitHub and in my resume.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://github.com/Katherine-Tang" target="_blank">GitHub</a>
+          <a class="btn btn-secondary" href="cv.pdf" target="_blank">Resume</a>
+          <a class="btn btn-secondary" href="mailto:katherine.tang406@gmail.com">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile-card glass">
+          <div class="avatar">
+            <!-- 有照片时用下面这行，没照片就保留占位块 -->
+            <img src="./photo.jpg" alt="Zhiying Tang" />
+            <!--
+            <div class="avatar-placeholder">
+              Add Your Profile Photo Here
+            </div>
+            -->
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <small>About Me</small>
+          <h2>A student builder with a research and product mindset</h2>
+          <p>
+            This page presents my academic background, technical experiences, selected projects, and achievements.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card glass about-text">
+            <p>
+              I am currently pursuing a degree in Information and Computing Science at XJTLU. My academic and project experiences
+              focus on machine learning, intelligent product development, data analysis, and AI-enhanced workflows.
+            </p>
+            <p>
+              I have worked on projects in Forex risk prediction, traffic forecasting, optimization modeling, iOS/web platform development,
+              and AI agent workflow design. I enjoy translating complex ideas into structured, usable, and scalable systems.
+            </p>
+            <p>
+              Beyond technical execution, I value leadership, communication, and cross-functional collaboration,
+              which I strengthened through student governance, competitions, and team-based project work.
+            </p>
+          </div>
+
+          <div class="card glass">
+            <div class="highlight-list">
+              <div class="highlight-item">
+                <strong>Research & Modeling</strong>
+                Experience in predictive modeling, mixed-frequency data integration, optimization, and machine learning evaluation.
+              </div>
+              <div class="highlight-item">
+                <strong>Engineering & Development</strong>
+                Built practical systems including dashboards, iOS interfaces, graphics projects, and AI workflow prototypes.
+              </div>
+              <div class="highlight-item">
+                <strong>Leadership & Collaboration</strong>
+                Led teams, coordinated communication, and transformed complex ideas into clear and deliverable outcomes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-title">
+          <small>Education</small>
+          <h2>Academic Background</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item glass">
+            <div class="timeline-top">
+              <h3>Xi’an Jiaotong-Liverpool University</h3>
+              <span>Sept 2023 – Present</span>
+            </div>
+            <div class="sub">Bachelor of Science in Information and Computing Science</div>
+            <ul>
+              <li>Dual Degree Programme with the University of Liverpool</li>
+              <li>GPA: 3.92 / 4.0</li>
+              <li>Relevant Coursework: Java Programming, Databases, Software Engineering, Data Analysis, Machine Learning, Computer Graphics, Computer Networks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-title">
+          <small>Experience</small>
+          <h2>Research, Leadership & Internship Experience</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item glass">
+            <div class="timeline-top">
+              <h3>Summer Undergraduate Research Fellowship</h3>
+              <span>Jun 2025 – Sept 2025</span>
+            </div>
+            <div class="sub">FX Risk Sentinel Analysis · XJTLU</div>
+            <ul>
+              <li>Contributed to an FX risk prediction system covering data collection, preprocessing, modeling, and deployment.</li>
+              <li>Applied MIDAS regression to align mixed-frequency macroeconomic data and market signals.</li>
+              <li>Built and optimized XGBoost and Random Forest models for Forex risk classification.</li>
+              <li>Developed an iOS interface and responsive HTML dashboard for real-time risk visualization.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item glass">
+            <div class="timeline-top">
+              <h3>AI Agent Engineer Intern</h3>
+              <span>2025 – Present</span>
+            </div>
+            <div class="sub">Intelligent Education Workflow / Agent Development</div>
+            <ul>
+              <li>Designed and optimized AI-agent-based teaching workflows for educational content processing.</li>
+              <li>Improved instructional scripts, workflow logic, and automation quality for intelligent teaching scenarios.</li>
+              <li>Integrated AI tools and workflow platforms to enhance content generation and delivery efficiency.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item glass">
+            <div class="timeline-top">
+              <h3>Student Representative Union, Vice President</h3>
+              <span>Sept 2023 – Present</span>
+            </div>
+            <div class="sub">Campus Leadership Experience</div>
+            <ul>
+              <li>Led student engagement initiatives and organized cross-college workshops and forums.</li>
+              <li>Collected and consolidated 50+ student proposals, helping drive multiple implemented improvements.</li>
+              <li>Strengthened communication between students and university administration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <small>Projects</small>
+          <h2>Selected Technical Projects</h2>
+          <p>
+            These projects reflect my interests in machine learning, intelligent systems, optimization, software engineering, and practical implementation.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card glass">
+            <div class="project-tag">Featured Project</div>
+            <h3>FX Risk Prediction System</h3>
+            <p>
+              Built a comprehensive Forex risk prediction pipeline integrating macroeconomic indicators, market data,
+              and financial news sentiment. The system included machine learning models, an HTML dashboard, and an iOS application for risk monitoring.
+            </p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>XGBoost</span>
+              <span>Random Forest</span>
+              <span>FinBERT</span>
+              <span>MySQL</span>
+              <span>SwiftUI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/citi_program" target="_blank">Code</a>
+              <a href="https://drive.google.com/file/d/1aNAAzEWtWKwQ_l3lFTCR_vyCGmbAvFbr/view?usp=share_link" target="_blank">iOS Demo</a>
+              <a href="https://drive.google.com/file/d/1EUMV_n2AUbGg24jWUmxVnbd-ggmdduI0/view?usp=share_link" target="_blank">HTML Demo</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Competition Project</div>
+            <h3>Traffic Forecasting & Route Optimization</h3>
+            <p>
+              Processed large-scale traffic data and developed a hybrid LSTM-GCN model for traffic prediction,
+              while improving Dijkstra-based route planning with dynamic time-weight adjustments in mixed environments.
+            </p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>LSTM</span>
+              <span>GCN</span>
+              <span>Dijkstra</span>
+              <span>Data Analysis</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/CyberC-competition" target="_blank">Code</a>
+              <a href="https://github.com/Katherine-Tang/CyberC-competition/blob/main/Autonomous_robot_navigation_in_mixed_environment.pdf" target="_blank">Poster</a>
+              <a href="https://github.com/Katherine-Tang/CyberC-competition/blob/main/Cyber_C%20%20competition.pdf" target="_blank">Report</a>
+              <a href="https://github.com/Katherine-Tang/CyberC-competition/blob/main/CyberC-Presentation(Xinyang%20Zhang%26Zhiying%20Tang)(2).pptx" target="_blank">PPT</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Course Project · CPT205</div>
+            <h3>CPT205 – 2D Interactive Birthday Card</h3>
+            <p>
+              Designed and implemented a 2D interactive birthday card using computer graphics techniques,
+              including custom scene composition, animation effects, and event-driven interaction.
+              The project focused on visual storytelling and coordinate-based drawing.
+            </p>
+            <div class="tech-stack">
+              <span>C++</span>
+              <span>OpenGL</span>
+              <span>FreeGLUT</span>
+              <span>2D Graphics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT205/2D%20Birthday%20Card/Card.cpp" target="_blank">Code</a>
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT205/2D%20Birthday%20Card/2360010_Zhiying_Tang_Report.pdf" target="_blank">Report</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Course Project · CPT205</div>
+            <h3>CPT205 – 3D Smart City Graphics System</h3>
+            <p>
+              Built a 3D interactive cityscape in OpenGL featuring multiple viewpoints, animated objects,
+              and environmental modeling. The project explored 3D scene construction, camera control,
+              object transformation, lighting, and immersive visual interaction.
+            </p>
+            <div class="tech-stack">
+              <span>C++</span>
+              <span>OpenGL</span>
+              <span>FreeGLUT</span>
+              <span>3D Graphics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT205/3D%20graphics/cityscape.cpp" target="_blank">Code</a>
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT205/3D%20graphics/CPT205_CW2_report.pdf" target="_blank">Report</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Course Project · CPT201 / CAN201</div>
+            <h3>Enhanced STEP 2.0 File Transfer System</h3>
+            <p>
+              Developed an enhanced client-server file transfer system based on the STEP protocol,
+              integrating compression, AES encryption, and adaptive multi-threaded transmission.
+              The system supports folder uploads, real-time progress tracking, and reliable large-file transfer.
+            </p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>Socket Programming</span>
+              <span>AES</span>
+              <span>Compression</span>
+              <span>Multi-threading</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/Y3/tree/main/CPT201/Coursework%201" target="_blank">Code</a>
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT201/Coursework%201/Report_Part_I.pdf" target="_blank">Report</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Course Project · CPT201 / CAN201</div>
+            <h3>Software-Defined Network Traffic Control with Mininet & Ryu</h3>
+            <p>
+              Built an SDN experimental environment using Mininet and the Ryu controller framework to implement
+              flow-based forwarding and transparent traffic redirection. The project involved topology design,
+              flow-table management, packet analysis, and performance evaluation.
+            </p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>Mininet</span>
+              <span>Ryu</span>
+              <span>SDN</span>
+              <span>Network Control</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Katherine-Tang/Y3/tree/main/CPT201/Coursework%202" target="_blank">Code</a>
+              <a href="https://github.com/Katherine-Tang/Y3/blob/main/CPT201/Coursework%202/Report_Part_II.pdf" target="_blank">Report</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Modeling Project</div>
+            <h3>Agricultural Optimization Modeling</h3>
+            <p>
+              Designed a multi-objective crop planting optimization system using real-world farmland and crop data,
+              integrating stochastic simulation and bio-inspired optimization algorithms to support strategic agricultural planning.
+            </p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>Monte Carlo</span>
+              <span>MOGWO</span>
+              <span>Optimization</span>
+              <span>LaTeX</span>
+            </div>
+            <div class="project-links">
+              <a href="#" target="_blank">Details</a>
+            </div>
+          </article>
+
+          <article class="project-card glass">
+            <div class="project-tag">Personal Project</div>
+            <h3>AI Agent Workflow Design</h3>
+            <p>
+              Built AI workflow systems using Coze and related tools by integrating dialogue flows,
+              automation logic, and external platforms to improve information processing efficiency and content generation quality.
+            </p>
+            <div class="tech-stack">
+              <span>Coze</span>
+              <span>Workflow</span>
+              <span>Automation</span>
+              <span>Prompt Engineering</span>
+            </div>
+            <div class="project-links">
+              <a href="#" target="_blank">Details</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="container">
+        <div class="section-title">
+          <small>Awards</small>
+          <h2>Honors & Achievements</h2>
+        </div>
+
+        <div class="award-list">
+          <div class="award-item glass">
+            <strong>The 20th Citi Financial Innovation Application Competition</strong>
+            <span>Second Prize / Special Prize · 2025</span>
+          </div>
+          <div class="award-item glass">
+            <strong>IEEE CyberC Big Data Competition</strong>
+            <span>Second Prize · 2024</span>
+          </div>
+          <div class="award-item glass">
+            <strong>Mathematical Contest in Modeling (MCM)</strong>
+            <span>Honorable Mention · 2025</span>
+          </div>
+          <div class="award-item glass">
+            <strong>Contemporary Undergraduate Mathematical Contest in Modeling</strong>
+            <span>Jiangsu Province Second Prize · 2024</span>
+          </div>
+          <div class="award-item glass">
+            <strong>XJTLU Research-led Learning Symposium</strong>
+            <span>Third Prize · 2024</span>
+          </div>
+          <div class="award-item glass">
+            <strong>Scholarship & Academic Recognition</strong>
+            <span>Add more scholarships / certifications here if needed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <small>Skills</small>
+          <h2>Technical Toolbox</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="skill-list">
+            <div class="skill-category glass">
+              <strong>Programming</strong>
+              <p>Python, Java, C/C++, SQL, SwiftUI, HTML/CSS</p>
+            </div>
+            <div class="skill-category glass">
+              <strong>Machine Learning & Data</strong>
+              <p>XGBoost, Random Forest, FinBERT, MIDAS Regression, PyTorch, Data Analysis, Predictive Modeling</p>
+            </div>
+          </div>
+
+          <div class="skill-list">
+            <div class="skill-category glass">
+              <strong>Development & Tools</strong>
+              <p>MySQL, Xcode, LaTeX, Coze, Cursor, GitHub, OpenGL, Mininet, Ryu</p>
+            </div>
+            <div class="skill-category glass">
+              <strong>Research & Workflow</strong>
+              <p>Feature Engineering, Model Evaluation, Academic Writing, Workflow Automation, Cross-functional Collaboration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card glass">
+          <div class="section-title" style="margin-bottom: 0;">
+            <small>Contact</small>
+            <h2>Let’s Connect</h2>
+          </div>
+          <p>
+            I am open to academic collaboration, internship opportunities, and technical discussions in AI,
+            data science, machine learning, and intelligent systems.
+          </p>
+
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:katherine.tang406@gmail.com">Email Me</a>
+            <a class="btn btn-secondary" href="https://github.com/Katherine-Tang" target="_blank">GitHub</a>
+            <!-- 有 LinkedIn 再打开 -->
+            <!-- <a class="btn btn-secondary" href="YOUR_LINKEDIN_URL" target="_blank">LinkedIn</a> -->
+          </div>
+
+          <p style="margin-top: 20px; font-size: 0.95rem; color: var(--soft);">
+            Academic Email: Zhiying.Tang23@student.xjtlu.edu.cn
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Zhiying Tang. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
