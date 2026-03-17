@@ -21,6 +21,26 @@
       --shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
       --radius: 22px;
       --max-width: 1180px;
+      --focus: rgba(37, 99, 235, 0.24);
+      --accent: #2563eb;
+      color-scheme: light;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0b0d11;
+      --bg-soft: #0f1218;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-2: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-strong: rgba(255, 255, 255, 0.22);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.68);
+      --soft: rgba(255, 255, 255, 0.52);
+      --highlight: rgba(255, 255, 255, 0.92);
+      --shadow: 0 22px 52px rgba(0, 0, 0, 0.45);
+      --focus: rgba(96, 165, 250, 0.24);
+      --accent: #60a5fa;
+      color-scheme: dark;
     }
 
     * {
@@ -58,7 +78,7 @@
     }
 
     .glass {
-      background: #ffffff;
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
@@ -69,10 +89,10 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(255, 255, 255, 0.9);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
@@ -88,13 +108,14 @@
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.6px;
-      color: #000000;
+      color: var(--text);
     }
 
     .nav-links {
       display: flex;
       gap: 22px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .nav-links a {
@@ -111,7 +132,7 @@
       bottom: -6px;
       width: 0;
       height: 1.5px;
-      background: #000000;
+      background: var(--text);
       transition: width 0.25s ease;
     }
 
@@ -121,6 +142,52 @@
 
     .nav-links a:hover::after {
       width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--panel) 76%, transparent);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+    }
+
+    .icon-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--focus);
+    }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      padding: 2px 6px;
+      border-radius: 8px;
+      letter-spacing: 0.2px;
     }
 
     /* HERO */
@@ -158,9 +225,9 @@
       display: inline-block;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.04);
-      color: #333333;
-      border: 1px solid rgba(0,0,0,0.10);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      color: var(--muted);
+      border: 1px solid var(--border);
       font-size: 0.88rem;
       margin-bottom: 18px;
     }
@@ -173,7 +240,7 @@
     }
 
     .hero h1 span {
-      color: #000000;
+      color: var(--text);
     }
 
     .hero p {
@@ -200,15 +267,16 @@
     }
 
     .btn-primary {
-      background: #ffffff;
-      color: #050505;
-      box-shadow: 0 10px 24px rgba(255,255,255,0.10);
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid var(--border);
       color: var(--text);
-      background: rgba(255,255,255,0.03);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
     }
 
     .btn:hover {
@@ -230,10 +298,10 @@
       border-radius: 26px;
       overflow: hidden;
       margin-bottom: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        rgba(255,255,255,0.02);
+        linear-gradient(135deg, color-mix(in srgb, var(--panel) 70%, transparent), color-mix(in srgb, var(--panel-2) 70%, transparent)),
+        color-mix(in srgb, var(--panel) 60%, transparent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -260,8 +328,8 @@
     .quick-info div {
       padding: 14px 16px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      border: 1px solid var(--border);
       color: var(--muted);
     }
 
@@ -287,7 +355,7 @@
 
     .section-title small {
       display: inline-block;
-      color: #2563eb; /* 蓝色：ABOUT / EDUCATION 等 */
+      color: var(--accent);
       margin-bottom: 8px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -329,8 +397,8 @@
     .highlight-item {
       padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      border: 1px solid var(--border);
     }
 
     .highlight-item strong {
@@ -348,8 +416,8 @@
     .timeline-item {
       padding: 24px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      border: 1px solid var(--border);
     }
 
     .timeline-top {
@@ -397,14 +465,14 @@
       padding: 26px;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--panel-2) 68%, transparent), color-mix(in srgb, var(--panel) 66%, transparent));
     }
 
     .project-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.008));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--panel-2) 64%, transparent), color-mix(in srgb, var(--panel) 54%, transparent));
       opacity: 1;
       pointer-events: none;
     }
@@ -416,8 +484,8 @@
 
     .project-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(255,255,255,0.18);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow);
     }
 
     .project-tag {
@@ -450,8 +518,8 @@
     .tech-stack span {
       padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.08);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      border: 1px solid var(--border);
       font-size: 0.84rem;
       color: var(--text);
     }
@@ -466,7 +534,7 @@
     .project-links a {
       font-size: 0.95rem;
       color: var(--highlight);
-      border-bottom: 1px solid rgba(0,0,0,0.28);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 35%, transparent);
       padding-bottom: 1px;
     }
 
@@ -481,8 +549,8 @@
     .skill-category {
       padding: 18px;
       border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.06);
+      background: var(--panel);
+      border: 1px solid var(--border);
     }
 
     .award-item strong,
@@ -523,6 +591,154 @@
       font-size: 0.94rem;
     }
 
+    /* PROJECT FILTERS */
+    .project-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 18px 0 22px;
+    }
+
+    .input {
+      flex: 1 1 280px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .input input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .input input::placeholder {
+      color: var(--soft);
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel-2) 70%, transparent);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+    }
+
+    .pill[aria-pressed="true"] {
+      background: color-mix(in srgb, var(--accent) 18%, var(--panel));
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border-strong));
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .result-hint {
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    /* COMMAND PALETTE (simple modal) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 16px 16px;
+      background: rgba(0,0,0,0.35);
+      z-index: 2000;
+    }
+
+    .modal[aria-hidden="false"] {
+      display: flex;
+    }
+
+    .modal-panel {
+      width: min(820px, 100%);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+    }
+
+    .modal-title {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .modal-body {
+      padding: 16px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .quick-link {
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .quick-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+    }
+
+    .quick-link small {
+      display: block;
+      color: var(--soft);
+      margin-top: 2px;
+      font-size: 0.86rem;
+    }
+
     @media (max-width: 960px) {
       .hero-grid,
       .grid-2,
@@ -547,6 +763,10 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -563,6 +783,14 @@
         <a href="#awards">Awards</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
+        <div class="nav-actions">
+          <button class="icon-btn" type="button" id="open-search" aria-haspopup="dialog" aria-controls="command-palette">
+            Search <span class="kbd">Ctrl K</span>
+          </button>
+          <button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle theme">
+            Theme
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -739,8 +967,27 @@
           </p>
         </div>
 
+        <div class="project-controls">
+          <div class="input glass" style="box-shadow:none;">
+            <span style="color:var(--soft); font-weight:700;">⌕</span>
+            <input id="project-search" type="search" placeholder="Search projects by title, tag, tech, or description..." autocomplete="off" />
+          </div>
+          <div class="pill-row" id="project-filters" aria-label="Project filters">
+            <button class="pill" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="pill" type="button" data-filter="featured" aria-pressed="false">Featured</button>
+            <button class="pill" type="button" data-filter="competition" aria-pressed="false">Competition</button>
+            <button class="pill" type="button" data-filter="course" aria-pressed="false">Course</button>
+            <button class="pill" type="button" data-filter="personal" aria-pressed="false">Personal</button>
+            <button class="pill" type="button" data-filter="modeling" aria-pressed="false">Modeling</button>
+          </div>
+          <div class="project-meta" style="width:100%;">
+            <div class="result-hint" id="project-result-hint">Showing all projects</div>
+            <button class="pill" type="button" id="project-reset" aria-pressed="false">Reset</button>
+          </div>
+        </div>
+
         <div class="project-grid">
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="featured">
             <div class="project-tag">Featured Project</div>
             <h3>FX Risk Prediction System</h3>
             <p>
@@ -762,7 +1009,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="competition">
             <div class="project-tag">Competition Project</div>
             <h3>Traffic Forecasting & Route Optimization</h3>
             <p>
@@ -784,7 +1031,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="course">
             <div class="project-tag">Course Project · CPT205</div>
             <h3>CPT205 – 2D Interactive Birthday Card</h3>
             <p>
@@ -804,7 +1051,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="course">
             <div class="project-tag">Course Project · CPT205</div>
             <h3>CPT205 – 3D Smart City Graphics System</h3>
             <p>
@@ -824,7 +1071,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="course">
             <div class="project-tag">Course Project · CPT201 / CAN201</div>
             <h3>Enhanced STEP 2.0 File Transfer System</h3>
             <p>
@@ -845,7 +1092,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="course">
             <div class="project-tag">Course Project · CPT201 / CAN201</div>
             <h3>Software-Defined Network Traffic Control with Mininet & Ryu</h3>
             <p>
@@ -866,7 +1113,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="modeling">
             <div class="project-tag">Modeling Project - CUMCM</div>
             <h3>Agricultural Optimization Modeling</h3>
             <p>
@@ -885,7 +1132,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="modeling">
             <div class="project-tag">Modeling Project - MCM</div>
             <h3>Olympic Medal Prediction Modeling</h3>
             <p>
@@ -907,7 +1154,7 @@
             </div>
           </article>
 
-          <article class="project-card glass">
+          <article class="project-card glass" data-category="personal">
             <div class="project-tag">Personal Project</div>
             <h3>AI Agent Workflow Design</h3>
             <p>
@@ -1025,6 +1272,200 @@
       © 2026 Zhiying Tang. All rights reserved.
     </div>
   </footer>
+
+  <div class="modal" id="command-palette" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-head">
+        <div class="modal-title">Search</div>
+        <button class="icon-btn" type="button" id="close-search" aria-label="Close">Esc</button>
+      </div>
+      <div class="modal-body">
+        <div class="input glass" style="box-shadow:none;">
+          <span style="color:var(--soft); font-weight:700;">⌕</span>
+          <input id="global-search" type="search" placeholder="Jump to section or search projects..." autocomplete="off" />
+        </div>
+        <div class="quick-links" id="quick-links">
+          <a class="quick-link" href="#about"><strong>About</strong><small>Bio & highlights</small></a>
+          <a class="quick-link" href="#education"><strong>Education</strong><small>Academic background</small></a>
+          <a class="quick-link" href="#experience"><strong>Experience</strong><small>Internship & leadership</small></a>
+          <a class="quick-link" href="#projects"><strong>Projects</strong><small>Search & filter projects</small></a>
+          <a class="quick-link" href="#awards"><strong>Awards</strong><small>Honors & achievements</small></a>
+          <a class="quick-link" href="#contact"><strong>Contact</strong><small>Email & links</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const THEME_KEY = "site_theme";
+      const html = document.documentElement;
+
+      function applyTheme(theme) {
+        if (theme === "dark") html.setAttribute("data-theme", "dark");
+        else html.removeAttribute("data-theme");
+      }
+
+      function getPreferredTheme() {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (saved === "dark" || saved === "light") return saved;
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      function setTheme(theme) {
+        localStorage.setItem(THEME_KEY, theme);
+        applyTheme(theme);
+        syncThemeButton();
+      }
+
+      const themeToggle = document.getElementById("theme-toggle");
+      function syncThemeButton() {
+        const isDark = html.getAttribute("data-theme") === "dark";
+        if (!themeToggle) return;
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+      }
+
+      applyTheme(getPreferredTheme());
+      syncThemeButton();
+      themeToggle?.addEventListener("click", () => {
+        const isDark = html.getAttribute("data-theme") === "dark";
+        setTheme(isDark ? "light" : "dark");
+      });
+
+      // Projects: search + category filter
+      const projectSearch = document.getElementById("project-search");
+      const projectFilters = document.getElementById("project-filters");
+      const projectReset = document.getElementById("project-reset");
+      const projectHint = document.getElementById("project-result-hint");
+      const projectCards = Array.from(document.querySelectorAll("#projects .project-card"));
+
+      function normalize(s) {
+        return (s || "").toLowerCase().replace(/\s+/g, " ").trim();
+      }
+
+      function cardText(card) {
+        const title = card.querySelector("h3")?.textContent || "";
+        const tag = card.querySelector(".project-tag")?.textContent || "";
+        const desc = card.querySelector("p")?.textContent || "";
+        const tech = Array.from(card.querySelectorAll(".tech-stack span")).map(x => x.textContent || "").join(" ");
+        return normalize([title, tag, desc, tech].join(" "));
+      }
+
+      function getActiveFilter() {
+        const pressed = projectFilters?.querySelector('.pill[aria-pressed="true"]');
+        return pressed?.getAttribute("data-filter") || "all";
+      }
+
+      function setActiveFilter(next) {
+        if (!projectFilters) return;
+        projectFilters.querySelectorAll(".pill").forEach(btn => {
+          const on = btn.getAttribute("data-filter") === next;
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      }
+
+      function applyProjectFilter() {
+        const q = normalize(projectSearch?.value || "");
+        const filter = getActiveFilter();
+
+        let visible = 0;
+        projectCards.forEach(card => {
+          const category = (card.getAttribute("data-category") || "").toLowerCase();
+          const okCategory = (filter === "all") || (category === filter);
+          const okQuery = !q || cardText(card).includes(q);
+          const show = okCategory && okQuery;
+          card.style.display = show ? "" : "none";
+          if (show) visible += 1;
+        });
+
+        if (projectHint) {
+          const parts = [];
+          if (filter !== "all") parts.push(`Filter: ${filter}`);
+          if (q) parts.push(`Query: "${q}"`);
+          projectHint.textContent = parts.length ? `Showing ${visible} project(s) · ${parts.join(" · ")}` : `Showing ${visible} project(s)`;
+        }
+      }
+
+      projectSearch?.addEventListener("input", applyProjectFilter);
+      projectFilters?.addEventListener("click", (e) => {
+        const btn = e.target.closest(".pill");
+        if (!btn) return;
+        const next = btn.getAttribute("data-filter") || "all";
+        setActiveFilter(next);
+        applyProjectFilter();
+      });
+      projectReset?.addEventListener("click", () => {
+        if (projectSearch) projectSearch.value = "";
+        setActiveFilter("all");
+        applyProjectFilter();
+      });
+      applyProjectFilter();
+
+      // Command palette: Ctrl/Cmd + K
+      const palette = document.getElementById("command-palette");
+      const openSearch = document.getElementById("open-search");
+      const closeSearch = document.getElementById("close-search");
+      const globalSearch = document.getElementById("global-search");
+
+      function setPalette(open) {
+        if (!palette) return;
+        palette.setAttribute("aria-hidden", open ? "false" : "true");
+        document.body.style.overflow = open ? "hidden" : "";
+        if (open) setTimeout(() => globalSearch?.focus(), 0);
+      }
+
+      function closePalette() { setPalette(false); }
+      function openPalette() { setPalette(true); }
+
+      openSearch?.addEventListener("click", openPalette);
+      closeSearch?.addEventListener("click", closePalette);
+      palette?.addEventListener("click", (e) => {
+        if (e.target === palette) closePalette();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        const key = e.key.toLowerCase();
+        const isK = key === "k";
+        const hasMod = e.metaKey || e.ctrlKey;
+        if (hasMod && isK) {
+          e.preventDefault();
+          const open = palette?.getAttribute("aria-hidden") === "false";
+          setPalette(!open);
+          return;
+        }
+        if (key === "escape") closePalette();
+      });
+
+      globalSearch?.addEventListener("input", () => {
+        const v = normalize(globalSearch.value);
+        if (!v) return;
+        const sections = [
+          { id: "about", label: "about" },
+          { id: "education", label: "education" },
+          { id: "experience", label: "experience" },
+          { id: "projects", label: "projects" },
+          { id: "awards", label: "awards" },
+          { id: "skills", label: "skills" },
+          { id: "contact", label: "contact" },
+        ];
+        const hit = sections.find(s => s.label.startsWith(v));
+        if (hit) {
+          window.location.hash = `#${hit.id}`;
+          closePalette();
+          return;
+        }
+        // fallback: route query into project search
+        if (projectSearch) {
+          projectSearch.value = globalSearch.value;
+          setActiveFilter("all");
+          applyProjectFilter();
+          window.location.hash = "#projects";
+          closePalette();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
